@@ -49,14 +49,14 @@ public class EpicodeJavaSpringDay1Application {
 
         System.out.println("topping disponibili:");
         for (Topping topping : menu.getToppings()) {
-            System.out.println(topping.getName());
+            System.out.println(topping.getName() + " " + " calorie: " + " " + topping.getCalories() + " " + "prezzo: " + topping.getPrice());
 
         }
 
         System.out.println("---------------------------------------------------------------------------");
         System.out.println("beverage disponibili:");
         for (Beverage beverage : menu.getBeverages()) {
-            System.out.println(beverage.getName() + " " + beverage.getPrice());
+            System.out.println(beverage.getName() + " " + " prezzo: " + beverage.getPrice() + " " + "calorie" + " " + beverage.getCalories());
         }
 
     }

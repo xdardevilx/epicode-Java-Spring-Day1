@@ -8,9 +8,18 @@ import lombok.Setter;
 public class Topping {
     private String name;
 
-    public Topping() {};
+    private int calories;
 
-    public Topping(String name) {
+    private double price;
+
+    public Topping() {
+    }
+
+    ;
+
+    public Topping(String name, int calories, double price) {
         this.name = name;
+        this.calories = calories;
+        this.price = price;
     }
 }

@@ -16,8 +16,8 @@ public class AppBeans {
     @Bean
     public Pizza margherita() {
         List<Topping> toppings = new ArrayList<>();
-        toppings.add(new Topping("mozzarella"));
-        toppings.add(new Topping("tomato"));
+        toppings.add(new Topping("mozzarella", 110, 0.99));
+        toppings.add(new Topping("tomato", 100, 0.99));
         return new Pizza("margherita", 4.99, 1104, toppings, false, new InfoNutrition(1104));
     }
 
@@ -25,19 +25,19 @@ public class AppBeans {
     @Bean
     public Pizza salamiPizza() {
         List<Topping> toppings = new ArrayList<>();
-        toppings.add(new Topping("mozzarella"));
-        toppings.add(new Topping("tomato"));
-        toppings.add(new Topping("salami"));
+        toppings.add(new Topping("mozzarella", 110, 0.99));
+        toppings.add(new Topping("tomato", 100, 0.99));
+        toppings.add(new Topping("salami", 100, 0.99));
         return new Pizza("salamiPizza", 4.99, 1160, toppings, true, new InfoNutrition(1160));
     }
 
     @Bean
     public List<Topping> toppings() {
         List<Topping> toppings = new ArrayList<>();
-        toppings.add(new Topping("Cheese"));
-        toppings.add(new Topping("Ham"));
-        toppings.add(new Topping("Onions"));
-        toppings.add(new Topping("Salami"));
+        toppings.add(new Topping("Cheese", 100, 0.99));
+        toppings.add(new Topping("Ham", 100, 0.99));
+        toppings.add(new Topping("Onions", 100, 0.99));
+        toppings.add(new Topping("Salami", 100, 0.99));
         return toppings;
     }
 
