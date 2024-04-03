@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 import valerio.epicodeJavaSpringDay1.Enum.OrderStatus;
@@ -42,9 +43,8 @@ public class OrderRunner implements CommandLineRunner {
 
 
     @Override
+    @Bean
     public void run(String... args) {
-
-        List<Menu> menu = Arrays.asList();
 
 
         List<Topping> toppings = new ArrayList<>();
@@ -54,6 +54,21 @@ public class OrderRunner implements CommandLineRunner {
         toppings.add(new Topping("Salami", 100, 0.99));
         toppings.add(new Topping("mozzarella", 110, 0.99));
         toppings.add(new Topping("tomato", 100, 0.99));
+
+        List<Topping> margheritaToppings = new ArrayList<>();
+        margheritaToppings.add(new Topping("mozzarella", 110, 0.99));
+        margheritaToppings.add(new Topping("tomato", 100, 0.99));
+
+        List<Topping> salamiToppings = new ArrayList<>();
+        salamiToppings.add(new Topping("mozzarella", 110, 0.99));
+        salamiToppings.add(new Topping("tomato", 100, 0.99));
+        salamiToppings.add(new Topping("salami", 100, 0.99));
+
+        List<MenuItem> menu = Arrays.asList(
+                new Pizza("margherita", 4.99, 1104, margheritaToppings, true, new InfoNutrition(1101)),
+                new Pizza("salamiPizza", 4.99, 1160, salamiToppings, true, new InfoNutrition(1160))
+        );
+
 
         List<Beverage> beverages = new ArrayList<>();
         Beverage lemonade = new Beverage();
@@ -79,8 +94,8 @@ public class OrderRunner implements CommandLineRunner {
         order.setStatus(OrderStatus.IN_PROGRESS);
         order.setTable(new Table(1, 2, TableStatus.OCCUPATED));
         order.setAcquisitionTime(LocalDateTime.now());
-        order.addItem(menu.getMenu().get(0));
-        order.addItem(menu.getMenu().get(1));
+        order.addItem(menu.get(0));
+        order.addItem(menu.get(1));
         double total = order.calculateTotalPrice();
         total += coverCharge;
         order.setTotalPrice(total);
