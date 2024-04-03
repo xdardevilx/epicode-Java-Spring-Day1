@@ -1,16 +1,16 @@
-package beans;
+package valerio.epicodeJavaSpringDay1.beans;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import valerio.epicodeJavaSpringDay1.Beverage;
-import valerio.epicodeJavaSpringDay1.InfoNutrition;
-import valerio.epicodeJavaSpringDay1.Pizza;
-import valerio.epicodeJavaSpringDay1.Topping;
+import valerio.epicodeJavaSpringDay1.*;
+import valerio.epicodeJavaSpringDay1.Enum.TableStatus;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
+@ComponentScan(basePackages = "valerio.epicodeJavaSpringDay1")
 public class AppBeans {
 
     @Bean
@@ -64,5 +64,15 @@ public class AppBeans {
 
         return beverages;
 
+    }
+
+    @Bean
+    public Menu createMenu(List<MenuItem> menu, List<Topping> toppings, List<Beverage> beverages) {
+        return new Menu(menu, toppings, beverages);
+    }
+
+    @Bean
+    public Table createTable() {
+        return new Table(1, 4, TableStatus.FREE);
     }
 }
