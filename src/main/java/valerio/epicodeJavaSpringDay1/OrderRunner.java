@@ -11,9 +11,8 @@ import valerio.epicodeJavaSpringDay1.Enum.TableStatus;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-
-import static java.awt.SystemColor.menu;
 
 @Component
 @PropertySource("application.properties")
@@ -45,12 +44,16 @@ public class OrderRunner implements CommandLineRunner {
     @Override
     public void run(String... args) {
 
+        List<Menu> menu = Arrays.asList();
+
 
         List<Topping> toppings = new ArrayList<>();
         toppings.add(new Topping("Cheese", 100, 0.99));
         toppings.add(new Topping("Ham", 100, 0.99));
         toppings.add(new Topping("Onions", 100, 0.99));
         toppings.add(new Topping("Salami", 100, 0.99));
+        toppings.add(new Topping("mozzarella", 110, 0.99));
+        toppings.add(new Topping("tomato", 100, 0.99));
 
         List<Beverage> beverages = new ArrayList<>();
         Beverage lemonade = new Beverage();
@@ -71,7 +74,6 @@ public class OrderRunner implements CommandLineRunner {
         wine.setCalories(607);
         beverages.add(wine);
 
-//        Order order = createOrder();
         Order order = new Order();
         order.setOrderNumber(1);
         order.setStatus(OrderStatus.IN_PROGRESS);
